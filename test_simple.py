@@ -144,11 +144,19 @@ def test_simple(args):
             output_name = os.path.splitext(os.path.basename(image_path))[0]
             scaled_disp, depth = disp_to_depth(disp, 0.1, 100)
             if args.pred_metric_depth:
+<<<<<<< HEAD
                 name_dest_npy = os.path.join(output_directory, "{}_depth_{}.npy".format(output_name, args.model_name))
                 metric_depth = STEREO_SCALE_FACTOR * depth.cpu().numpy()
                 np.save(name_dest_npy, metric_depth)
             else:
                 name_dest_npy = os.path.join(output_directory, "{}_disp_{}.npy".format(output_name, args.model_name))
+=======
+                name_dest_npy = os.path.join(output_directory, "{}_depth.npy".format(output_name))
+                metric_depth = STEREO_SCALE_FACTOR * depth.cpu().numpy()
+                np.save(name_dest_npy, metric_depth)
+            else:
+                name_dest_npy = os.path.join(output_directory, "{}_disp.npy".format(output_name))
+>>>>>>> origin/master
                 np.save(name_dest_npy, scaled_disp.cpu().numpy())
 
             # Saving colormapped depth image
